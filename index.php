@@ -28,11 +28,46 @@
 ?>
 
 <html>
+   <style>
+   body {
+      background-color: lemonchiffon;  
+      display: flex;
+      flex-direction:column ;
+      max-width:90% ;
+      width: 60%;
+      place-self:center ;
+   }
+
+   .welcome-note, .form, .insight-card, .insight-card-pricing-grid {
+      border: 2px dashed black ;
+      border-radius: 1em; 
+      box-sizing: border;
+      padding:1em ;
+      background-color: antiquewhite;
+
+   }
+
+   .form button {
+      border: 2px solid black ; 
+   }
+
+   .selections{
+      font-size:larger;
+      align-self:center;
+      text-align:center;
+      margin:1em;
+   }
+
+   div {
+      margin-top:1em;
+   }
+
+   </style>
    <p class="welcome-note"><?=$welcomeBack?></p>
 
    <p>
       
-      <form action="" method="post">
+      <form class="form" action="" method="post">
          
          <select name="dessert" >
             <option value="">(choose a dessert)</option>
@@ -63,14 +98,16 @@
       
       
       
-      <form action="forget_order.php" method="post">
+      <form class="forget" action="forget_order.php" method="post">
          <button type="submit">forget</button>
       </form>
    </p>
    
-   <?=$_SESSION['dessert']?>
-   <?=$_SESSION['drink']?>  
-   <?=$_SESSION['drinkSize']?>   
+   <div class="selections">
+      <?=$_SESSION['dessert']?><br>
+      <?=$_SESSION['drink']?><br>  
+      <?=$_SESSION['drinkSize']?>   
+   </div>
    
    <div class="insight-card">
       <h3>Live guidance</h3>
@@ -78,7 +115,7 @@
       <p class="insight-note"><?= htmlspecialchars(pairingSuggestion()); ?></p>
    </div>
    
-   <div class="insight-card pricing-grid">
+   <div class="insight-card-pricing-grid">
       <div>
          <h3>Estimated total</h3>
          <p class="price-figure"><?= htmlspecialchars(formattedTotal()); ?></p>
@@ -90,4 +127,4 @@
    </div>
 </html>
 
-<?=var_dump(headers_sent());?>
+<!-- <?=var_dump(headers_sent());?> -->
